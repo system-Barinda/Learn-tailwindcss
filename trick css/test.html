@@ -1,11 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    
+<body class="bg-[#f1eeeb]">
+
+  <!-- Navigation Bar -->
+  <header class="w-full flex items-center justify-between px-5 relative">
+
+    <!-- Left: Language Switcher -->
+    <div class="flex flex-col text-green-800 ">
+      <a href="#" class="text-[24px] leading-none">DE</a>
+      <a href="#" class="text-[24px] leading-none">EN</a>
+    </div>
+
+    <!-- Center: Logo / Brand Name -->
+    <h1 class="text-3xl font-bold text-green-800">Baumeister</h1>
+
+    <!-- Right: Vertical Links (Desktop Only) -->
+    <nav class="hidden lg:flex flex-col text-green-800 text-lg text-right font-medium ">
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">References</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <!-- Right: Mobile/Tablet Menu Icon -->
+    <button id="menuBtn" class="lg:hidden w-12 h-8 bg-green-800 clip-path-polygon flex items-center justify-center text-white font-bold transition-all duration-300">
+      ☰
+    </button>
+
+  </header>
+
+  <!-- Dropdown Menu for Mobile/Tablet -->
+  <div id="mobileMenu" class="hidden flex flex-col items-center text-green-800 text-2xl px-5 py-6  font-bold space-y-6 py-10 border-t bg-[#f1eeeb]">
+    <a href="#" class="hover:underline">About</a>
+    <a href="#" class="hover:underline">Services</a>
+    <a href="#" class="hover:underline">References</a>
+    <a href="#" class="hover:underline">Contact</a>
+  </div>
+
+  <style>
+    .clip-path-polygon {
+      clip-path: polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%);
+    }
+  </style>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    let isOpen = false;
+
+    menuBtn.addEventListener("click", () => {
+      isOpen = !isOpen;
+      mobileMenu.classList.toggle("hidden");
+      menuBtn.textContent = isOpen ? "X" : "☰";
+    });
+  </script>
+
+<footer class="bg-[#f3f0ee] py-8 px-16 flex justify-between items-start text-sm">
+
+  <!-- Address -->
+  <div>
+    <p>Agentur Baumeister</p>
+    <p>Böckhstraße 13</p>
+    <p>10967 Berlin</p>
+  </div>
+
+  <!-- Email + Phone -->
+  <div class="text-right">
+    <a href="mailto:hallo@agentur-baumeister.com" class="underline">hallo@agentur-baumeister.com</a>
+    <p>+49 (0)30 - 490 827 87</p>
+  </div>
+
+  <!-- LinkedIn -->
+  <div>
+    <a href="#">LinkedIn</a>
+  </div>
+
+  <!-- Instagram -->
+  <div>
+    <a href="#">Instagram</a>
+  </div>
+
+  <!-- Legal -->
+  <div class="text-right">
+    <a href="#">Impressum</a><br>
+    <a href="#">Datenschutz</a>
+  </div>
+
+</footer>
+
+
+
+
+
+
+
 </body>
 </html>
