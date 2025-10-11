@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Face with Mask — Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-[#f1eeeb] flex items-center justify-center p-6">
+
+  <!-- Container -->
+  <div class="w-full max-w-md mx-auto">
+
+    <!-- Title -->
+    <h2 class="text-center text-2xl font-semibold text-gray-800 mb-6">Face with Mask (Tailwind + SVG)</h2>
+
+    <!-- Card -->
+    <div class="bg-white/80 rounded-2xl shadow-lg p-6 flex justify-center">
+
+      <!-- SVG Face -->
+      <svg viewBox="0 0 300 300" width="300" height="300" class="block">
+        <!-- head -->
+        <circle cx="150" cy="130" r="95" fill="#FFE8D6" stroke="#e6d6c9" stroke-width="2"/>
+
+        <!-- hair (top) -->
+        <path d="M55 95 Q70 30 150 40 Q230 30 245 95 Z" fill="#1f2937" opacity="0.95"/>
+
+        <!-- left eye -->
+        <ellipse cx="115" cy="120" rx="14" ry="9" fill="#fff"/>
+        <circle cx="115" cy="120" r="5" fill="#111827"/>
+
+        <!-- right eye -->
+        <ellipse cx="185" cy="120" rx="14" ry="9" fill="#fff"/>
+        <circle cx="185" cy="120" r="5" fill="#111827"/>
+
+        <!-- eyebrows -->
+        <path d="M96 105 q20 -10 38 -6" stroke="#111827" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M204 105 q-20 -10 -38 -6" stroke="#111827" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+        <!-- nose (simple) -->
+        <path d="M150 130 q4 12 -6 22" stroke="#d8a78a" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+        <!-- mask (body) -->
+        <g id="mask">
+          <!-- mask main shape -->
+          <path d="M75 165 q75 40 150 0 q-15 40 -150 0 z"
+                fill="#0ea5a4" stroke="#0b7f7d" stroke-width="2" />
+
+          <!-- top seam -->
+          <path d="M80 160 q70 26 140 0" stroke="#0b7f7d" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+          <!-- pleats / lines -->
+          <path d="M96 170 q45 18 108 0" stroke="#0b7f7d" stroke-width="1.5" fill="none" opacity="0.9"/>
+          <path d="M110 175 q35 14 80 0" stroke="#0b7f7d" stroke-width="1" fill="none" opacity="0.7"/>
+
+          <!-- left strap -->
+          <path d="M64 160 q-24 10 -24 30" stroke="#111827" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="60" cy="189" r="4" fill="#111827" />
+
+          <!-- right strap -->
+          <path d="M236 160 q24 10 24 30" stroke="#111827" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="240" cy="189" r="4" fill="#111827" />
+        </g>
+
+        <!-- small chin shadow -->
+        <ellipse cx="150" cy="210" rx="50" ry="15" fill="#000" opacity="0.03"/>
+      </svg>
+
+    </div>
+
+    <!-- Description / Controls -->
+    <div class="mt-6 text-center text-gray-600">
+      <p class="mb-2">This is an SVG face with a mask. Change mask color by editing the `<span class="font-mono text-xs">fill="#0ea5a4"</span> inside the SVG.</p>
+      <div class="flex justify-center gap-3">
+        <button onclick="changeMask('#0ea5a4')" class="px-3 py-1 rounded bg-teal-600 text-white text-sm">Teal</button>
+        <button onclick="changeMask('#0b82ff')" class="px-3 py-1 rounded bg-blue-600 text-white text-sm">Blue</button>
+        <button onclick="changeMask('#f59e0b')" class="px-3 py-1 rounded bg-amber-500 text-white text-sm">Amber</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // small helper to change mask color (keeps solution self-contained)
+    function changeMask(color){
+      const maskPath = document.querySelector('#mask path:first-of-type');
+      const seam = document.querySelector('#mask path:nth-of-type(2)');
+      if(maskPath) maskPath.setAttribute('fill', color);
+      // change stroke slightly darker
+      if(seam) seam.setAttribute('stroke', shadeColor(color, -20));
+    }
+
+    // utility to darken color (basic)
+    function shadeColor(hex, percent) {
+      let f = hex.slice(1), t = percent < 0 ? 0 : 255, p = percent < 0 ? percent * -1 : percent;
+      let R = parseInt(f.substring(0,2),16), G = parseInt(f.substring(2,4),16), B = parseInt(f.substring(4,6),16);
+      return "#" + (0x1000000 + (Math.round((t-R)*p/100)+R)*0x10000 + (Math.round((t-G)*p/100)+G)*0x100 + (Math.round((t-B)*p/100)+B)).toString(16).slice(1);
+    }
+  </script>
+
+</body>
+</html>
