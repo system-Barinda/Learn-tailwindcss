@@ -64,27 +64,41 @@
     });
   </script>
 
-<footer class="bg-[#f3f0ee] py-8 px-16 text-sm text-black">
-  <!-- Top Section -->
-  <div class="mb-8 space-y-1">
-    <p>Agentur Baumeister</p>
-    <p>Böckhstraße 13</p>
-    <p>10967 Berlin</p>
+<footer class="bg-[#f3f0ee] py-8 px-4 sm:px-8 md:px-16 text-sm text-black">
 
-    <p class="mt-4 underline">
-      <a href="mailto:hallo@agentur-baumeister.com">hallo@agentur-baumeister.com</a>
-    </p>
-    <p>+49 (0)30 - 490 827 87</p>
+  <!-- Top Section -->
+  <div class="mb-8">
+    <!-- This wrapper stays stacked on mobile but splits on tablet -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Left Column (Always on top in mobile, left on tablet) -->
+      <div class="space-y-1">
+        <p>Agentur Baumeister</p>
+        <p>Böckhstraße 13</p>
+        <p>10967 Berlin</p>
+      </div>
+
+      <!-- Right Column (Below in mobile, right-aligned in tablet) -->
+      <div class="space-y-1 md:text-right">
+        <p class="mt-4 md:mt-0 underline break-all">
+          <a href="mailto:hallo@agentur-baumeister.com">hallo@agentur-baumeister.com</a>
+        </p>
+        <p>+49 (0)30 - 490 827 87</p>
+      </div>
+    </div>
   </div>
 
   <!-- Bottom Links -->
-  <div class="flex gap-6 text-xs">
+  <div class="flex flex-wrap gap-4 md:gap-8 md:justify-between text-xs">
     <a href="#" class="hover:underline">Datenschutz</a>
     <a href="#" class="hover:underline">Impressum</a>
     <a href="#" class="hover:underline">LinkedIn</a>
     <a href="#" class="hover:underline">Instagram</a>
   </div>
+
 </footer>
+
+
 
 
 
