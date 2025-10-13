@@ -64,32 +64,45 @@
     });
   </script>
 
-<footer class="bg-[#f3f0ee] py-8 px-4 sm:px-8 md:px-16 text-sm text-black ">
+<footer class="bg-[#f3f0ee] py-8 px-4 sm:px-8 md:px-16 text-sm text-black">
 
   <!-- Top Section -->
-  <div class="mb-8 g">
-    <!-- This wrapper stays stacked on mobile but splits on tablet -->
-    <div class="grid grid-rows-2 md:grid-cols-2 gap-8">
-      
-      <!-- Left Column (Always on top in mobile, left on tablet) -->
+  <div class="mb-8">
+    <!-- Mobile & Tablet: Stay stacked | Desktop: 4 sections in a row -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+
+      <!-- Address -->
       <div class="space-y-1">
         <p>Agentur Baumeister</p>
         <p>Böckhstraße 13</p>
         <p>10967 Berlin</p>
       </div>
 
-      <!-- Right Column (Below in mobile, right-aligned in tablet) -->
-      <div class="space-y-1 md:text-right">
-        <p class="mt-4 md:mt-0 underline break-all">
+      <!-- Email + Phone -->
+      <div class="space-y-1 md:text-right lg:text-left">
+        <p class="underline break-all">
           <a href="mailto:hallo@agentur-baumeister.com">hallo@agentur-baumeister.com</a>
         </p>
         <p>+49 (0)30 - 490 827 87</p>
       </div>
+
+      <!-- LinkedIn -->
+      <div class="hidden lg:block">
+        <a href="#" class="hover:underline">LinkedIn</a>
+      </div>
+
+      <!-- Instagram / Impressum / Datenschutz -->
+      <div class="hidden lg:flex flex-col space-y-1">
+        <a href="#" class="hover:underline">Instagram</a>
+        <a href="#" class="hover:underline">Impressum</a>
+        <a href="#" class="hover:underline">Datenschutz</a>
+      </div>
+
     </div>
   </div>
 
-  <!-- Bottom Links -->
-  <div class="flex flex-wrap gap-4 md:gap-8 md:justify-between text-xs">
+  <!-- Bottom Links (Only visible on mobile + tablet) -->
+  <div class="flex flex-wrap gap-4 md:gap-8 md:justify-between text-xs lg:hidden">
     <a href="#" class="hover:underline">Datenschutz</a>
     <a href="#" class="hover:underline">Impressum</a>
     <a href="#" class="hover:underline">LinkedIn</a>
@@ -97,6 +110,7 @@
   </div>
 
 </footer>
+
 
 
 
